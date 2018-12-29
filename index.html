@@ -23,7 +23,7 @@
 
         const worker = new Worker("./worker.js");
         worker.postMessage({ canvas: offscreen, width:canvas2.width, height:canvas2.height }, [offscreen]);
-        draw(ctx1);
+        draw(ctx1, canvas1.width, canvas1.height);
     </script>
   </body>
 </html>
