@@ -9,7 +9,7 @@ function draw(ctx, width, height) {
   for (let i = 0; i < maxCircle * 100; i++) {
     setTimeout(function() {
       if (i % maxCircle === 0) {
-        console.log(new Date().getSeconds());
+        // console.log(new Date().getSeconds());
         ctx.resetTransform();
         ctx.clearRect(0, 0, width, height);
         ctx.translate(width / 2, height / 2);
