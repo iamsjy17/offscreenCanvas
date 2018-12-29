@@ -22,7 +22,7 @@
         const offscreen = canvas2.transferControlToOffscreen();
 
         const worker = new Worker("./offscreenTest.js");
-        worker.postMessage({ canvas: offscreen }, [offscreen]);
+        worker.postMessage({ canvas: offscreen, width:canvas2.width, height:canvas2.height }, [offscreen]);
         draw(ctx1);
     </script>
   </body>

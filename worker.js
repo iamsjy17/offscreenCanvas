@@ -1,8 +1,8 @@
 self.importScripts("./drawtest.js");
 
 self.onmessage = event => {
-  const offscreen = event.data.canvas;
+  const { offscreen, width, height } = event.data;
   const context = offscreen.getContext("2d");
 
-  draw(context);
+  draw(context, width, height);
 };
