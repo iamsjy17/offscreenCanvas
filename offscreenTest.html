@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <canvas
+      id="canvas1"
+      style="border:1px solid #d3d3d3;"
+      width="500"
+      height="500"
+      >Non OffScreen</canvas
+    >
+    <canvas 
+        id="canvas2" 
+        width="500"
+        height="500" 
+        style="border:1px solid #d3d3d3;"
+        >OffScreen<canvas>
+    <script>
+        const canvas1 = document.getElementById("canvas1");
+        const ctx1 = canvas1.getContext("2d");
+        const canvas2 = document.getElementById("canvas2");
+        const offscreen = canvas2.transferControlToOffscreen();
+
+        const worker = new Worker("./offscreenTest.js");
+        worker.postMessage({ canvas: offscreen }, [offscreen]);
+        draw(ctx1);
+    </script>
+  </body>
+</html>
