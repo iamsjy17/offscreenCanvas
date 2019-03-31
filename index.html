@@ -6,13 +6,24 @@
       style="border:1px solid #d3d3d3;"
       width="500"
       height="500"
-      >Plotta Test</canvas
+      >Non OffScreen</canvas
     >
-    <script src="./lib/plotta/plotta.js"></script>
-    <script src="./lib/plotta/testData.js"></script>
+    <canvas 
+        id="canvas2" 
+        width="500"
+        height="500" 
+        style="border:1px solid #d3d3d3;"
+        >OffScreen<canvas>
+    <script src="./drawtest.js"></script>
     <script>
-      const canvas1 = document.getElementById("canvas1");
-      const plotta = new Plotta(canvas1, testData);
+        const canvas1 = document.getElementById("canvas1");
+        const ctx1 = canvas1.getContext("2d");
+        const canvas2 = document.getElementById("canvas2");
+        const offscreen = canvas2.transferControlToOffscreen();
+
+        const worker = new Worker("./worker.js");
+        worker.postMessage({ canvas: offscreen, width:canvas2.width, height:canvas2.height }, [offscreen]);
+        draw(ctx1, canvas1.width, canvas1.height);
     </script>
   </body>
 </html>
